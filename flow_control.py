@@ -22,7 +22,7 @@ print('This line always runs — it is outside the if.')
 
 name = 'Ada'
 if name:
-    print(f'Hello, {name}')      # runs — non-empty strings are truthy
+    print(f'Hello, {name}')  # runs — non-empty strings are truthy
 
 empty_name = ''
 if empty_name:
@@ -30,7 +30,7 @@ if empty_name:
 
 count = 5
 if count:
-    print(f'You have {count} items.')   # any non-zero number is truthy
+    print(f'You have {count} items.')  # any non-zero number is truthy
 
 # ---------- If, Else ----------
 # 'else' runs when the 'if' condition is False.
@@ -49,7 +49,7 @@ score = 97
 if score >= 90:
     if score >= 96:
         print('Grade: A+')
-    elif score >=90:
+    elif score >= 90:
         print('Grade: A-')
 elif score >= 80:
     print('Grade: B')
@@ -74,14 +74,21 @@ if is_logged_in:
 else:
     print('Please log in.')
 
-# Tip: too much nesting hurts readability. Often the same logic
-# is clearer when you combine conditions with 'and':
-if is_logged_in and is_admin:
-    print('Welcome, admin!')
-elif is_logged_in:
-    print('Welcome, user!')
-else:
-    print('Please log in.')
+
+def one_function():
+    # Tip: too much nesting hurts readability. Often the same logic
+    # is clearer when you combine conditions with 'and':
+    if is_logged_in and is_admin:
+        print('Welcome, admin!')
+        return is_logged_in
+    if is_logged_in:
+        print('Welcome, user!')
+        if True:
+            return None
+    else:
+        print('Please log in.')
+        return None
+
 
 # ---------- Ternary Expressions ----------
 # A one-line shortcut for simple if/else. The pattern is:
@@ -90,4 +97,4 @@ status = 'adult' if age >= 18 else 'minor'
 print(status)
 
 # Useful inside f-strings:
-print(f"You {'passed' if score >= 60 else 'failed'} the test.")
+print(f'You {"passed" if score >= 60 else "failed"} the test.')
